@@ -2,17 +2,16 @@ const express = require('express')
 const app = express();
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 var cors = require('cors')
+require('dot.env').config();
 const port =process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-//sheikhmohammadalamin99
-//eZSrtaAGxjtLoP4L
 
 
 
-const uri = "mongodb+srv://sheikhmohammadalamin99:eZSrtaAGxjtLoP4L@cluster0.jodl5p0.mongodb.net/?retryWrites=true&w=majority";
+const uri =`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jodl5p0.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
